@@ -1,6 +1,6 @@
 {
   "orgName": "Automated-Claim-Processing-2 - Dev Org",
-  "edition": "Developer",
+  "template": "0TT1Q000004I0it",
   "settings": {
     "lightningExperienceSettings": {
       "enableS1DesktopEnabled": true
