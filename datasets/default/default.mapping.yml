@@ -1,0 +1,424 @@
+Insert Account:
+  sf_object: Account
+  table: Account
+  fields:
+  - BillingCity
+  - BillingCountry
+  - BillingPostalCode
+  - BillingState
+  - BillingStreet
+  - Description
+  - Fax
+  - Industry
+  - Name
+  - NumberOfEmployees
+  - Ownership
+  - Phone
+  - ShippingCity
+  - ShippingCountry
+  - ShippingPostalCode
+  - ShippingState
+  - ShippingStreet
+  - Type
+  - Website
+
+Insert CodeSet:
+  sf_object: CodeSet
+  table: CodeSet
+  fields:
+  - Code
+  - CodeDescription
+  - CodeSetKey
+  - IsActive
+  - IsCustomCode
+  - IsPrimary
+  - Name
+
+Insert Product2:
+  sf_object: Product2
+  table: Product2
+  fields:
+  - Description
+  - Family
+  - IsActive
+  - Name
+  - ProductCode
+
+Insert UnitOfMeasure:
+  sf_object: UnitOfMeasure
+  table: UnitOfMeasure
+  fields:
+  - Name
+  - Type
+  - UnitCode
+
+Insert Claim:
+  sf_object: Claim
+  table: Claim
+  fields:
+  - Name
+  - ClaimReason
+  - ClaimReasonType
+  - ClaimType
+  - FinalizedDate
+  - FnolChannel
+  - Severity
+  - Status
+  - Summary
+  lookups:
+    AccountId:
+      table: Account
+      key_field: AccountId
+
+Insert Contact:
+  sf_object: Contact
+  table: Contact
+  fields:
+  - Description
+  - Email
+  - Fax
+  - FirstName
+  - LastName
+  - LeadSource
+  - MailingCity
+  - MailingCountry
+  - MailingPostalCode
+  - MailingState
+  - MailingStreet
+  - Phone
+  - Salutation
+  - Title
+  lookups:
+    AccountId:
+      table: Account
+      key_field: AccountId
+    ReportsToId:
+      table: Contact
+      key_field: ReportsToId
+      after: Insert Contact
+  
+Insert ClaimParticipant:
+  sf_object: ClaimParticipant
+  table: ClaimParticipant
+  fields:
+  - Roles
+  lookups:
+    ClaimId:
+      table: Claim
+      key_field: ClaimId
+
+Insert ProductFaultCode:
+  sf_object: ProductFaultCode
+  table: ProductFaultCode
+  fields:
+  - ProductFamily
+  lookups:
+    FaultCodeId:
+      table: CodeSet
+      key_field: FaultCodeId
+    ProductId:
+      table: Product2
+      key_field: ProductId
+
+Insert ProductLaborCode:
+  sf_object: ProductLaborCode
+  table: ProductLaborCode
+  fields:
+  - EstimatedEffort
+  - ProductFamily
+  lookups:
+    LaborCodeId:
+      table: CodeSet
+      key_field: LaborCodeId
+    ProductId:
+      table: Product2
+      key_field: ProductId
+
+Insert WarrantyTerm:
+  sf_object: WarrantyTerm
+  table: WarrantyTerm
+  fields:
+  - IsActive
+  - Code
+  - Description
+  - EffectiveStartDate
+  - ExchangeType
+  - Exclusions
+  - ExpensesCovered
+  - ExpensesCoveredDuration
+  - ExpensesCoveredUnitOfTime
+  - LaborCovered
+  - LaborCoveredDuration
+  - LaborCoveredUnitOfTime
+  - PartsCovered
+  - PartsCoveredDuration
+  - PartsCoveredUnitOfTime
+  - IsTransferable
+  - UsageCovered
+  - WarrantyDuration
+  - WarrantyTermName
+  - WarrantyType
+  - WarrantyUnitOfTime
+  lookups:
+    UsageCoveredUomId:
+      table: UnitOfMeasure
+      key_field: UsageCoveredUomId
+
+Insert Asset:
+  sf_object: Asset
+  table: Asset
+  fields:
+  - Name
+  - City
+  - IsCompetitorProduct
+  - InstallDate
+  - IsInternal
+  - Price
+  - PurchaseDate
+  - Quantity
+  - SerialNumber
+  - Status
+  lookups:
+    AccountId:
+      table: Account
+      key_field: AccountId
+    ContactId:
+      table: Contact
+      key_field: ContactId
+    Product2Id:
+      table: Product2
+      key_field: Product2Id
+
+Insert ProductWarrantyTerm:
+  sf_object: ProductWarrantyTerm
+  table: ProductWarrantyTerm
+  fields:
+  - CoveredProductFamily
+  lookups:
+    CoveredProductId:
+      table: Product2
+      key_field: CoveredProductId
+    WarrantyTermId:
+      table: WarrantyTerm
+      key_field: WarrantyTermId
+
+Insert WarrantyTermCoverage:
+  sf_object: WarrantyTermCoverage
+  table: WarrantyTermCoverage
+  fields:
+  - IsExcluded
+  lookups:
+    CoveredCodeId:
+      table: CodeSet
+      key_field: CoveredCodeId
+    ProductPartId:
+      table: Product2
+      key_field: ProductPartId
+    WarrantyTermId:
+      table: WarrantyTerm
+      key_field: WarrantyTermId
+
+Insert AssetWarranty:
+  sf_object: AssetWarranty
+  table: AssetWarranty
+  fields:
+  - EndDate
+  - ExpensesCovered
+  - ExpensesCoveredEndDate
+  - LaborCovered
+  - LaborCoveredEndDate
+  - PartsCovered
+  - PartsCoveredEndDate
+  - StartDate
+  - IsTransferable
+  - WarrantyType
+  lookups:
+    AssetId:
+      table: Asset
+      key_field: AssetId
+    WarrantyTermId:
+      table: WarrantyTerm
+      key_field: WarrantyTermId
+
+Insert Case:
+  sf_object: Case
+  table: Case
+  fields:
+  - Origin
+  - Reason
+  - Type
+  - SuppliedCompany
+  - Description
+  - SuppliedEmail
+  - IsEscalated
+  - Priority
+  - Status
+  - Subject
+  lookups:
+    AccountId:
+      table: Account
+      key_field: AccountId
+    AssetId:
+      table: Asset
+      key_field: AssetId
+    ContactId:
+      table: Contact
+      key_field: ContactId
+
+Insert AssetMilestone:
+  sf_object: AssetMilestone
+  table: AssetMilestone
+  fields:
+  - Name
+  - MilestoneDate
+  - MilestoneType
+  - Stage
+  - UsageType
+  lookups:
+    AssetId:
+      table: Asset
+      key_field: AssetId
+
+Insert ClaimItem:
+  sf_object: ClaimItem
+  table: ClaimItem
+  fields:
+  - AssetUsageUnitOfMeasure
+  - AssetUsageValue
+  - Description
+  - FaultDate
+  - Name
+  - RepairDate
+  lookups:
+    AssetId:
+      table: Asset
+      key_field: AssetId
+    ClaimId:
+      table: Claim
+      key_field: ClaimId
+
+Insert ClaimCoverage:
+  sf_object: ClaimCoverage
+  table: ClaimCoverage
+  fields:
+  - CoverageType
+  - Description
+  - Name
+  - Status
+  lookups:
+    AssetWarrantyId:
+      table: AssetWarranty
+      key_field: AssetWarrantyId
+    CausalPartId:
+      table: Product2
+      key_field: CausalPartId
+    ClaimId:
+      table: Claim
+      key_field: ClaimId
+    ClaimItemId:
+      table: ClaimItem
+      key_field: ClaimItemId
+    FaultCodeId:
+      table: CodeSet
+      key_field: FaultCodeId
+    ClaimParticipantId:
+      table: ClaimParticipant
+      key_field: ClaimParticipantId
+
+Insert WorkOrder:
+  sf_object: WorkOrder
+  table: WorkOrder
+  fields:
+  - DurationType
+  - Priority
+  - Status
+  - Street
+  - Subject
+  - Tax
+  lookups:
+    AccountId:
+      table: Account
+      key_field: AccountId
+    AssetId:
+      table: Asset
+      key_field: AssetId
+    CaseId:
+      table: Case
+      key_field: CaseId
+    ContactId:
+      table: Contact
+      key_field: ContactId
+
+Insert ClaimCoveragePaymentDetail:
+  sf_object: ClaimCoveragePaymentDetail
+  table: ClaimCoveragePaymentDetail
+  fields:
+  - AdjustedAmount
+  - ChargeType
+  - ClaimedAmount
+  - Comment
+  - Description
+  - Name
+  - Quantity
+  - Status
+  lookups:
+    ChargeTypeCodeId:
+      table: CodeSet
+      key_field: ChargeTypeCodeId
+    ClaimCoverageId:
+      table: ClaimCoverage
+      key_field: ClaimCoverageId
+    ReplacementPartId:
+      table: Product2
+      key_field: ReplacementPartId
+
+Insert RecordAlert:
+  sf_object: RecordAlert
+  table: RecordAlert
+  fields:
+  - IsActive
+  - Description
+  - EffectiveDate
+  - Severity
+  - Subject
+  - ValidUntilDate
+  lookups:
+    WhatId:
+      table: Asset
+      key_field: WhatId
+
+Insert AssetAccountParticipant:
+  sf_object: AssetAccountParticipant
+  table: AssetAccountParticipant
+  fields:
+  - EffectiveStartDate
+  - EffectiveEndDate
+  - IsActive
+  - Name
+  - StakeholderRole
+  - UsageType
+  lookups:
+    AccountId:
+      table: Account
+      key_field: AccountId
+    AssetId:
+      table: Asset
+      key_field: AssetId
+
+Insert AssetContactParticipant:
+  sf_object: AssetContactParticipant
+  table: AssetContactParticipant
+  fields:
+  - EffectiveStartDate
+  - EffectiveEndDate
+  - IsActive
+  - Name
+  - StakeholderRole
+  - UsageType
+  lookups:
+    AssetId:
+      table: Asset
+      key_field: AssetId
+    ContactId:
+      table: Contact
+      key_field: ContactId

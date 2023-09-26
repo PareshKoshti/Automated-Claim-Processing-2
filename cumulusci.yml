@@ -26,3 +26,166 @@ tasks:
     run_tests:
         options:
             required_org_code_coverage_percent: 75
+
+    check_expression_set_inactive:
+        description: Check expression set is inactive
+        class_path: cumulusci_ext.tasks.check_expr_set_inactive.CheckExpressionSet
+
+    install_managed:
+        options:
+            security_type: NONE
+
+    update_dependencies:
+        options:
+            security_type: NONE
+
+flows:
+    deploy_qbrix:
+        steps:
+            1:
+                flow: dependencies
+            2:
+                flow: deploy_qbrix_min
+            3:
+                flow: post_qbrix_deploy
+
+    deploy_qbrix_min:
+        steps:
+            1:
+                task: add_standard_value_set_entries
+                options:
+                    api_names: AssetMilestoneMilestoneType
+                    entries:
+                        - fullName: 1 Month Service
+                          label: 1 Month Service
+                        - fullName: 3 Month Service
+                          label: 3 Month Service
+                        - fullName: 6 Month Service
+                          label: 6 Month Service
+                        - fullName: 1 Year Service
+                          label: 1 Year Service
+                        - fullName: 5 Year Service
+                          label: 5 Year Service
+                        - fullName: Extended Warranty
+                          label: Extended Warranty
+                        - fullName: Critical Recall
+                          label: Critical Recall
+                ui_options:
+                    name: Add Asset Milestone Milestone Type Values
+            2:
+                task: add_standard_value_set_entries
+                options:
+                    api_names: CCPaymentDetailChargeType
+                    entries:
+                        - fullName: Expense
+                          label: Expense
+                ui_options:
+                    name: Add Claim Coverage Payment Detail Charge Type Values
+            3:
+                task: add_standard_value_set_entries
+                options:
+                    api_names: Product2Family
+                    entries:
+                        - fullName: Generator
+                          label: Generator
+                        - fullName: Conditioner
+                          label: Conditioner
+                        - fullName: Compressor
+                          label: Compressor
+                ui_options:
+                    name: Add Product Family Values
+            4:
+                task: add_standard_value_set_entries
+                options:
+                    api_names: UnitOfMeasureType
+                    entries:
+                        - fullName: Time
+                          label: Time
+                        - fullName: Period
+                          label: Period
+                        - fullName: Weight
+                          label: Weight
+                        - fullName: Distance
+                          label: Distance
+                        - fullName: Length
+                          label: Length
+                ui_options:
+                    name: Add Unit of Measure Type Values
+            5:
+                task: add_standard_value_set_entries
+                options:
+                    api_names: WarrantyType
+                    entries:
+                        - fullName: Basic Warranty
+                          label: Basic Warranty
+                        - fullName: Extended Warranty
+                          label: Extended Warranty
+                ui_options:
+                    name: Add Warranty Type Values
+            6:
+                task: update_data
+                options:
+                    recipe: snowfakery/activate_contextdefinition.yml
+                    object: ContextDefinitionVersion
+                ui_options:
+                    name: Activate Contect Definition Version
+            7:
+                task: deploy
+                options:
+                    path: force-app/main/default
+                ui_options:
+                    name: Deploy Warranty Management Module Metadata
+
+    dependencies:
+        steps:
+            1:
+                flow: prepare_org
+            2:
+                flow: source_dependencies
+
+    source_dependencies:
+        steps:
+            1:
+                task: deploy
+                options:
+                    path: force-app/main/pre
+                ui_options:
+                    name: Deploy Settings and Expression Set Alias Metadata
+            2:
+                task: deploy
+                options:
+                    path: force-app/main/sfdx_ext
+                ui_options:
+                    name: Deploy Context Definition Metadata
+
+    post_qbrix_deploy:
+        steps:
+            1:
+                flow: None
+
+    prepare_org:
+        steps:
+            3:
+                task: update_dependencies
+            4:
+                task: assign_permission_sets
+                options:
+                    api_names: MfgServiceConsole,WarrantyLifecycleMgmtPsl,ClaimsManagementFoundationPsl,LifeEventsAccessPSL,BREDesigner
+                ui_options:
+                    name: Assign Permission Sets to Admin User
+
+    dev_org:
+        steps:
+            1:
+                flow: None
+            2:
+                flow: deploy_qbrix
+            3:
+                flow: None
+
+    mfg_acp_data:
+        steps:
+            1:
+                task: load_sample_data
+                ui_options:
+                    name: Load Sample Data
