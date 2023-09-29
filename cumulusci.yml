@@ -244,7 +244,7 @@ plans:
     install_data:
         slug: install_data
         title: Install Sample Data
-        tier: additional
+        tier: secondary
         is_listed: True
         preflight_message: "Installs sample data for Automated Claim Processing Prebuilt Solution in your org"
         post_install_message: "Thanks for installing data for Automated Claim Processing Prebuilt Solution."
