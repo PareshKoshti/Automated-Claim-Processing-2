@@ -162,11 +162,7 @@ flows:
     post_qbrix_deploy:
         steps:
             1:
-                task: load_sample_data
-                ui_options:
-                    name: Load Sample Data
-                    is_required: false
-                    recommended: false
+                flow: None
 
     prepare_org:
         steps:
@@ -281,6 +277,10 @@ plans:
           - when: "'OmniStudioDesigner' not in tasks.get_available_permission_set_licenses()"
             action: error
             message: "You need OmniStudioDesigner licence in your Org to use this feature. Contact your Administrator."
+          - when: |
+              org_config.salesforce_client.query("SELECT Id FROM Account WHERE Name = 'Global Media X'")["totalSize"] > 0
+            message: "Data has already been delivered to this org"
+            action: error
           - when: "'ContextServiceAdminPsl' not in tasks.get_available_permission_set_licenses()"
             action: error
             message: "You need ContextServiceAdminPsl licence in your Org to use this feature. Contact your Administrator."
