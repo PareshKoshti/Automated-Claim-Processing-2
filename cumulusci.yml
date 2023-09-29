@@ -191,102 +191,102 @@ flows:
                 ui_options:
                     name: Load Sample Data
 
-    plans:
-        install:
-            slug: install
-            title: Install Metadata
-            tier: primary
-            is_listed: True
-            preflight_message: "Installs Manufacturing Cloud Automated Claim Processing Prebuilt Solution"
-            post_install_message: "Thanks for installing Manufacturing Cloud Automated Claim Processing Prebuilt Solution. "
-            error_message: ""
-            checks:
-              - when: "'MfgServiceConsole' not in tasks.get_available_permission_set_licenses()"
-                action: error
-                message: "You need MfgServiceConsole licence in your Org to use this feature. Contact your Administrator."
-              - when: "'WarrantyLifecycleMgmtPsl' not in tasks.get_available_permission_set_licenses()"
-                action: error
-                message: "You need WarrantyLifecycleMgmtPsl licence in your Org to use this feature. Contact your Administrator."
-              - when: "'WarrantyMgmtForExprcCloudPsl' not in tasks.get_available_permission_set_licenses()"
-                action: error
-                message: "You need WarrantyMgmtForExprcCloudPsl licence in your Org to use this feature. Contact your Administrator."
-              - when: "'ClaimsManagementFoundationPsl' not in tasks.get_available_permission_set_licenses()"
-                action: error
-                message: "You need ClaimsManagementFoundationPsl license in your Org to use this feature. Contact your Administrator."
-              - when: "'BREDesigner' not in tasks.get_available_permission_set_licenses()"
-                action: error
-                message: "You need BREDesigner licence in your Org to use this feature. Contact your Administrator."
-              - when: "'DecisionExplainerPSL' not in tasks.get_available_permission_set_licenses()"
-                action: error
-                message: "You need DecisionExplainerPSL licence in your Org to use this feature. Contact your Administrator."
-              - when: "'LifeEventsAccessPSL' not in tasks.get_available_permission_set_licenses()"
-                action: error
-                message: "You need LifeEventsAccessPSL licence in your Org to use this feature. Contact your Administrator."
-              - when: "'IndustriesServiceExcellencePsl' not in tasks.get_available_permission_set_licenses()"
-                action: error
-                message: "You need IndustriesServiceExcellencePsl licence in your Org to use this feature. Contact your Administrator."
-              - when: "'OmniStudioDesigner' not in tasks.get_available_permission_set_licenses()"
-                action: error
-                message: "You need OmniStudioDesigner licence in your Org to use this feature. Contact your Administrator."
-              - when: "not tasks.check_expression_set_inactive()"
-                action: error
-                message: "You need to disable the Expression Set to deploy the components"
-              - when: "'ContextServiceAdminPsl' not in tasks.get_available_permission_set_licenses()"
-                action: error
-                message: "You need ContextServiceAdminPsl licence in your Org to use this feature. Contact your Administrator."
-              - when: "'ContextServiceRuntimePsl' not in tasks.get_available_permission_set_licenses()"
-                action: error
-                message: "You need ContextServiceRuntimePsl licence in your Org to use this feature. Contact your Administrator."
-            steps:
-                1:
-                    flow: deploy_qbrix
-
-        install_data:
-            slug: install_data
-            title: Install Sample Data
-            tier: additional
-            is_listed: True
-            preflight_message: "Installs sample data for Automated Claim Processing Prebuilt Solution in your org"
-            post_install_message: "Thanks for installing data for Automated Claim Processing Prebuilt Solution."
-            error_message: ""
-            checks:
-              - when: "'MfgServiceConsole' not in tasks.get_available_permission_set_licenses()"
-                action: error
-                message: "You need MfgServiceConsole licence in your Org to use this feature. Contact your Administrator."
-              - when: "'WarrantyLifecycleMgmtPsl' not in tasks.get_available_permission_set_licenses()"
-                action: error
-                message: "You need WarrantyLifecycleMgmtPsl licence in your Org to use this feature. Contact your Administrator."
-              - when: "'WarrantyMgmtForExprcCloudPsl' not in tasks.get_available_permission_set_licenses()"
-                action: error
-                message: "You need WarrantyMgmtForExprcCloudPsl licence in your Org to use this feature. Contact your Administrator."
-              - when: "'ClaimsManagementFoundationPsl' not in tasks.get_available_permission_set_licenses()"
-                action: error
-                message: "You need ClaimsManagementFoundationPsl license in your Org to use this feature. Contact your Administrator."
-              - when: "'BREDesigner' not in tasks.get_available_permission_set_licenses()"
-                action: error
-                message: "You need BREDesigner licence in your Org to use this feature. Contact your Administrator."
-              - when: "'DecisionExplainerPSL' not in tasks.get_available_permission_set_licenses()"
-                action: error
-                message: "You need DecisionExplainerPSL licence in your Org to use this feature. Contact your Administrator."
-              - when: "'LifeEventsAccessPSL' not in tasks.get_available_permission_set_licenses()"
-                action: error
-                message: "You need LifeEventsAccessPSL licence in your Org to use this feature. Contact your Administrator."
-              - when: "'IndustriesServiceExcellencePsl' not in tasks.get_available_permission_set_licenses()"
-                action: error
-                message: "You need IndustriesServiceExcellencePsl licence in your Org to use this feature. Contact your Administrator."
-              - when: "'OmniStudioDesigner' not in tasks.get_available_permission_set_licenses()"
-                action: error
-                message: "You need OmniStudioDesigner licence in your Org to use this feature. Contact your Administrator."
-              - when: |
-                  org_config.salesforce_client.query("SELECT Id FROM Account WHERE Name = 'Global Media X'")["totalSize"] > 0
-                message: "Data has already been delivered to this org"
-                action: error
-              - when: "'ContextServiceAdminPsl' not in tasks.get_available_permission_set_licenses()"
-                action: error
-                message: "You need ContextServiceAdminPsl licence in your Org to use this feature. Contact your Administrator."
-              - when: "'ContextServiceRuntimePsl' not in tasks.get_available_permission_set_licenses()"
-                action: error
-                message: "You need ContextServiceRuntimePsl licence in your Org to use this feature. Contact your Administrator."
-            steps:
-                1:
-                    flow: mfg_wm_data
+plans:
+    install:
+        slug: install
+        title: Install Metadata
+        tier: primary
+        is_listed: True
+        preflight_message: "Installs Manufacturing Cloud Automated Claim Processing Prebuilt Solution"
+        post_install_message: "Thanks for installing Manufacturing Cloud Automated Claim Processing Prebuilt Solution. "
+        error_message: ""
+        checks:
+          - when: "'MfgServiceConsole' not in tasks.get_available_permission_set_licenses()"
+            action: error
+            message: "You need MfgServiceConsole licence in your Org to use this feature. Contact your Administrator."
+          - when: "'WarrantyLifecycleMgmtPsl' not in tasks.get_available_permission_set_licenses()"
+            action: error
+            message: "You need WarrantyLifecycleMgmtPsl licence in your Org to use this feature. Contact your Administrator."
+          - when: "'WarrantyMgmtForExprcCloudPsl' not in tasks.get_available_permission_set_licenses()"
+            action: error
+            message: "You need WarrantyMgmtForExprcCloudPsl licence in your Org to use this feature. Contact your Administrator."
+          - when: "'ClaimsManagementFoundationPsl' not in tasks.get_available_permission_set_licenses()"
+            action: error
+            message: "You need ClaimsManagementFoundationPsl license in your Org to use this feature. Contact your Administrator."
+          - when: "'BREDesigner' not in tasks.get_available_permission_set_licenses()"
+            action: error
+            message: "You need BREDesigner licence in your Org to use this feature. Contact your Administrator."
+          - when: "'DecisionExplainerPSL' not in tasks.get_available_permission_set_licenses()"
+            action: error
+            message: "You need DecisionExplainerPSL licence in your Org to use this feature. Contact your Administrator."
+          - when: "'LifeEventsAccessPSL' not in tasks.get_available_permission_set_licenses()"
+            action: error
+            message: "You need LifeEventsAccessPSL licence in your Org to use this feature. Contact your Administrator."
+          - when: "'IndustriesServiceExcellencePsl' not in tasks.get_available_permission_set_licenses()"
+            action: error
+            message: "You need IndustriesServiceExcellencePsl licence in your Org to use this feature. Contact your Administrator."
+          - when: "'OmniStudioDesigner' not in tasks.get_available_permission_set_licenses()"
+            action: error
+            message: "You need OmniStudioDesigner licence in your Org to use this feature. Contact your Administrator."
+          - when: "not tasks.check_expression_set_inactive()"
+            action: error
+            message: "You need to disable the Expression Set to deploy the components"
+          - when: "'ContextServiceAdminPsl' not in tasks.get_available_permission_set_licenses()"
+            action: error
+            message: "You need ContextServiceAdminPsl licence in your Org to use this feature. Contact your Administrator."
+          - when: "'ContextServiceRuntimePsl' not in tasks.get_available_permission_set_licenses()"
+            action: error
+            message: "You need ContextServiceRuntimePsl licence in your Org to use this feature. Contact your Administrator."
+        steps:
+            1:
+                flow: deploy_qbrix
+                
+    install_data:
+        slug: install_data
+        title: Install Sample Data
+        tier: additional
+        is_listed: True
+        preflight_message: "Installs sample data for Automated Claim Processing Prebuilt Solution in your org"
+        post_install_message: "Thanks for installing data for Automated Claim Processing Prebuilt Solution."
+        error_message: ""
+        checks:
+          - when: "'MfgServiceConsole' not in tasks.get_available_permission_set_licenses()"
+            action: error
+            message: "You need MfgServiceConsole licence in your Org to use this feature. Contact your Administrator."
+          - when: "'WarrantyLifecycleMgmtPsl' not in tasks.get_available_permission_set_licenses()"
+            action: error
+            message: "You need WarrantyLifecycleMgmtPsl licence in your Org to use this feature. Contact your Administrator."
+          - when: "'WarrantyMgmtForExprcCloudPsl' not in tasks.get_available_permission_set_licenses()"
+            action: error
+            message: "You need WarrantyMgmtForExprcCloudPsl licence in your Org to use this feature. Contact your Administrator."
+          - when: "'ClaimsManagementFoundationPsl' not in tasks.get_available_permission_set_licenses()"
+            action: error
+            message: "You need ClaimsManagementFoundationPsl license in your Org to use this feature. Contact your Administrator."
+          - when: "'BREDesigner' not in tasks.get_available_permission_set_licenses()"
+            action: error
+            message: "You need BREDesigner licence in your Org to use this feature. Contact your Administrator."
+          - when: "'DecisionExplainerPSL' not in tasks.get_available_permission_set_licenses()"
+            action: error
+            message: "You need DecisionExplainerPSL licence in your Org to use this feature. Contact your Administrator."
+          - when: "'LifeEventsAccessPSL' not in tasks.get_available_permission_set_licenses()"
+            action: error
+            message: "You need LifeEventsAccessPSL licence in your Org to use this feature. Contact your Administrator."
+          - when: "'IndustriesServiceExcellencePsl' not in tasks.get_available_permission_set_licenses()"
+            action: error
+            message: "You need IndustriesServiceExcellencePsl licence in your Org to use this feature. Contact your Administrator."
+          - when: "'OmniStudioDesigner' not in tasks.get_available_permission_set_licenses()"
+            action: error
+            message: "You need OmniStudioDesigner licence in your Org to use this feature. Contact your Administrator."
+          - when: |
+              org_config.salesforce_client.query("SELECT Id FROM Account WHERE Name = 'Global Media X'")["totalSize"] > 0
+            message: "Data has already been delivered to this org"
+            action: error
+          - when: "'ContextServiceAdminPsl' not in tasks.get_available_permission_set_licenses()"
+            action: error
+            message: "You need ContextServiceAdminPsl licence in your Org to use this feature. Contact your Administrator."
+          - when: "'ContextServiceRuntimePsl' not in tasks.get_available_permission_set_licenses()"
+            action: error
+            message: "You need ContextServiceRuntimePsl licence in your Org to use this feature. Contact your Administrator."
+        steps:
+            1:
+                flow: mfg_wm_data
