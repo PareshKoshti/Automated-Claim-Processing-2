@@ -24,6 +24,10 @@ CREATE TABLE "Account" (
 );
 INSERT INTO "Account" VALUES(1,'New York','USA','31349','NY','10 Main Rd.','','(212) 555-5555','Manufacturing','Acme Partners','','','(212) 555-5555','New York','USA','31349','NY','10 Main Rd.','Customer','http://www.acmepartner.com');
 INSERT INTO "Account" VALUES(4,'Toronto','Canada','L4B 1Y3','Ontario','150 Chestnut Street','GBM is the worldwide leader in technology news and information on the Web and the producer of the longest-running and farthest-reaching television shows about technology. GBM''s network of sites combines breakthrough interactive technology with engaging content and design and is consistently ranked as the Internet''s leading content network in terms of both audience size and revenue, serving millions of users each day. The company''s television programming is broadcast by the USA Network and the Sci-Fi Channel to more than 70 million households and is syndicated to broadcast television stations in the nation''s top 120 markets, including the top 10 markets.','','Media','Global Media X','14668','','(905) 555-1227','Toronto','Canada','L4B 1Y3','Ontario','150 Chestnut Street','Prospect','');
+INSERT INTO "Account" VALUES(6,'','','','','','','','Machinery','Fin X','','','','','','','','','Other','');
+INSERT INTO "Account" VALUES(7,'','','','','','','','Manufacturing','Cellulo Trix','','','','','','','','','Other','');
+INSERT INTO "Account" VALUES(8,'','','','','','','','','Gen Suppliers','','','','','','','','','Other','');
+INSERT INTO "Account" VALUES(9,'','','','','','','','Machinery','Zelion Machinery','','','','','','','','','Reseller','');
 
 CREATE TABLE "Asset" (
 	id INTEGER NOT NULL, 
@@ -257,7 +261,6 @@ INSERT INTO "CodeSet" VALUES(9,'C06 - Repair Fuel Tank','','2e45f7c768e98ea949f0
 INSERT INTO "CodeSet" VALUES(10,'C02 - Repair Battery','','33f92b69081811907278c10994fa48f6-542775039','True','False','False','Repair Battery');
 INSERT INTO "CodeSet" VALUES(11,'P007 - Repair Belt Guard','','c72544d5abde9407536e0f5cd77e606a-466200590','True','False','False','Repair Belt Guard');
 
-
 CREATE TABLE "Contact" (
 	id INTEGER NOT NULL, 
 	"Description" VARCHAR(255), 
@@ -283,6 +286,13 @@ INSERT INTO "Contact" VALUES(2,'','hjane@acme.org','(212) 555-5566','Howard','Ja
 INSERT INTO "Contact" VALUES(3,'','ltom@acme.org','(212) 555-5566','Leanne','Tom','','New York','USA','31349','NY','10 Main Rd.','(212) 555-5566','Ms.','VP Customer Support','1','');
 INSERT INTO "Contact" VALUES(6,'Christina White is looking at moving forward with our products and will act as the champion for us.','cwhite@gm.org','','Christina','White','Employee Referral','Toronto','Canada','L4B 1Y3','Ontario','150 Chestnut Street','(415) 555-1227','','VP Sales','4','');
 INSERT INTO "Contact" VALUES(7,'','jcareey@gm.org','(555) 555-1227','Jon','Carrey','','Toronto','Canada','L4B 1Y3','Ontario','150 Chestnut Street','(905) 555-1227','','Sales Manager','4','');
+INSERT INTO "Contact" VALUES(13,'','','','Kiran','Ante','','','','','','','','Mr.','Technician','9','');
+INSERT INTO "Contact" VALUES(14,'','','','Harvey','Darcy','','','','','','','','Mr.','Supplier','8','');
+INSERT INTO "Contact" VALUES(15,'','','','Tricia','San','','','','','','','','Ms.','Financiar','7','');
+INSERT INTO "Contact" VALUES(16,'','','','Teresa','Potts','','','','','','','','Ms.','Sales Lead','9','');
+INSERT INTO "Contact" VALUES(17,'','','','Rita','Ferrari','','','','','','','','Ms.','','7','');
+INSERT INTO "Contact" VALUES(18,'','','','Liam','Willy','','','','','','','','Mr.','Technician','7','');
+INSERT INTO "Contact" VALUES(19,'','','','Kelly','Raima','','','','','','','','Ms.','Dealer Lead','6','');
 
 CREATE TABLE "Product2" (
 	id INTEGER NOT NULL, 
@@ -463,7 +473,12 @@ CREATE TABLE "AssetAccountParticipant" (
 	"AssetId" VARCHAR(255), 
 	PRIMARY KEY (id)
 );
-INSERT INTO "AssetAccountParticipant" VALUES(1,'2023-04-16','','True','Howard Jones','Customer','Manufacturing','1','2');
+INSERT INTO "AssetAccountParticipant" VALUES(1,'2022-07-18','','True','Kelly Raima','Sales dealer','Manufacturing','6','3');
+INSERT INTO "AssetAccountParticipant" VALUES(2,'2023-07-21','','True','Kiran Ante','Supplier','Automotive','9','4');
+INSERT INTO "AssetAccountParticipant" VALUES(3,'2023-07-21','','True','Teresa Potts','Sales dealer','Manufacturing','9','4');
+INSERT INTO "AssetAccountParticipant" VALUES(4,'2023-04-18','','True','Rita Ferrari','Sales dealer','Manufacturing','7','1');
+INSERT INTO "AssetAccountParticipant" VALUES(5,'2023-04-16','','True','Harvey Darcy','Supplier','Manufacturing','8','2');
+INSERT INTO "AssetAccountParticipant" VALUES(6,'2022-08-10','','True','Tricia San','Financier','Manufacturing','7','5');
 
 CREATE TABLE "AssetContactParticipant" (
 	id INTEGER NOT NULL, 
@@ -477,6 +492,12 @@ CREATE TABLE "AssetContactParticipant" (
 	"ContactId" VARCHAR(255), 
 	PRIMARY KEY (id)
 );
-INSERT INTO "AssetContactParticipant" VALUES(1,'2023-04-16','','True','Howard Jane','Owner','Manufacturing','2','2');
+INSERT INTO "AssetContactParticipant" VALUES(1,'2022-07-18','','True','Kelly Raima','Finance manager','Manufacturing','3','19');
+INSERT INTO "AssetContactParticipant" VALUES(2,'2023-04-16','','True','Harvey Darcy','Owner','Manufacturing','2','14');
+INSERT INTO "AssetContactParticipant" VALUES(3,'2023-07-21','','True','Kiran Ante','Technician','Manufacturing','4','13');
+INSERT INTO "AssetContactParticipant" VALUES(4,'2022-12-12','','True','Liam Willy','Technician','Manufacturing','5','18');
+INSERT INTO "AssetContactParticipant" VALUES(5,'2022-08-10','','True','Tricia San','Finance manager','Manufacturing','5','15');
+INSERT INTO "AssetContactParticipant" VALUES(6,'2023-04-18','','True','Rita Ferrari','Finance manager','Manufacturing','1','17');
+INSERT INTO "AssetContactParticipant" VALUES(7,'2023-07-21','','True','Teresa Potts','Finance manager','Manufacturing','4','16');
 
 COMMIT;

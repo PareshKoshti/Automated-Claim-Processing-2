@@ -117,7 +117,7 @@
                     <valueType>Literal</valueType>
                 </criteria>
                 <criteria>
-                    <operator>Equals</operator>
+                    <operator>LessThan</operator>
                     <sequenceNumber>3</sequenceNumber>
                     <sourceFieldName>PaymentDetailClaimedAmount</sourceFieldName>
                     <value>100</value>

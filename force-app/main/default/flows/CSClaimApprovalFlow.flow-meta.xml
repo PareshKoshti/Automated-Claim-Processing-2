@@ -95,7 +95,7 @@
             <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>Iterate_over_CCPDs.AdjustedAmount</leftValueReference>
-                <operator>EqualTo</operator>
+                <operator>GreaterThan</operator>
                 <rightValue>
                     <numberValue>0.0</numberValue>
                 </rightValue>
@@ -292,7 +292,7 @@
         <inputAssignments>
             <field>Status</field>
             <value>
-                <stringValue>Rejected</stringValue>
+                <stringValue>Approved</stringValue>
             </value>
         </inputAssignments>
         <object>ClaimCoveragePaymentDetail</object>
