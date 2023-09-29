@@ -245,9 +245,9 @@ plans:
             1:
                 flow: deploy_qbrix
 
-    install_data:
-        slug: install_data
-        title: Install Sample Data
+    install_data_acp:
+        slug: install_data_acp
+        title: Install Sample Data for Automated Claim Processing
         tier: additional
         is_listed: True
         preflight_message: "Installs sample data for Automated Claim Processing Prebuilt Solution in your org"
