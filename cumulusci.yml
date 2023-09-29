@@ -248,7 +248,7 @@ plans:
     install_data:
         slug: install_data
         title: Install Sample Data
-        tier: secondary
+        tier: additional
         is_listed: True
         preflight_message: "Installs sample data for Automated Claim Processing Prebuilt Solution in your org"
         post_install_message: "Thanks for installing data for Automated Claim Processing Prebuilt Solution."
@@ -281,10 +281,6 @@ plans:
           - when: "'OmniStudioDesigner' not in tasks.get_available_permission_set_licenses()"
             action: error
             message: "You need OmniStudioDesigner licence in your Org to use this feature. Contact your Administrator."
-          - when: |
-              org_config.salesforce_client.query("SELECT Id FROM Account WHERE Name = 'Global Media X'")["totalSize"] > 0
-            message: "Data has already been delivered to this org"
-            action: error
           - when: "'ContextServiceAdminPsl' not in tasks.get_available_permission_set_licenses()"
             action: error
             message: "You need ContextServiceAdminPsl licence in your Org to use this feature. Contact your Administrator."
