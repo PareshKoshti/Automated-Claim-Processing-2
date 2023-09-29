@@ -240,7 +240,7 @@ plans:
         steps:
             1:
                 flow: deploy_qbrix
-                
+
     install_data:
         slug: install_data
         title: Install Sample Data
@@ -289,4 +289,4 @@ plans:
             message: "You need ContextServiceRuntimePsl licence in your Org to use this feature. Contact your Administrator."
         steps:
             1:
-                flow: mfg_wm_data
+                flow: mfg_acp_data
