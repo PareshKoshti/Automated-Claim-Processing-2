@@ -162,7 +162,9 @@ flows:
     post_qbrix_deploy:
         steps:
             1:
-                flow: None
+                task: load_sample_data
+                ui_options:
+                    name: Load Sample Data
 
     prepare_org:
         steps:
